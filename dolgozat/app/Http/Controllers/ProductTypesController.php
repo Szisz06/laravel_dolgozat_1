@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Product_type;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProductTypesController extends Controller
 {
     public function index(){ 
 
-        return User::all(); 
+        return Product_type::all(); 
 
     } 
 
@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function show($id){ 
 
-        $user = response()->json(User::find($id)); 
+        $user = response()->json(Product_type::find($id)); 
 
         return $user; 
 
@@ -27,13 +27,13 @@ class UserController extends Controller
 
     public function store(Request $request){ 
 
-        $user = new User(); 
+        $user = new Product_type(); 
 
         $user->name = $request->name; 
 
-        $user->email = $request->email; 
+        $user->description = $request->description; 
 
-        $user->balance = $request->balance; 
+        $user->cost = $request->cost; 
 
         $user->save(); 
 
@@ -43,13 +43,13 @@ class UserController extends Controller
 
     public function update(Request $request, $id){ 
 
-        $user = User::find($id); 
+        $user = Product_type::find($id); 
 
         $user->name = $request->name; 
 
-        $user->email = $request->email; 
+        $user->description = $request->description; 
 
-        $user->balance = $request->balance; 
+        $user->cost = $request->cost; 
 
         $user->save(); 
 
@@ -59,7 +59,7 @@ class UserController extends Controller
 
     public function destroy($id){ 
 
-        User::find($id)->delete(); 
+        Product_type::find($id)->delete(); 
 
          
 
